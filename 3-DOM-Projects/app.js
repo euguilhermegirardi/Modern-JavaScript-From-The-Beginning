@@ -10,19 +10,24 @@ loadEventListeners();
 
 // Load all event listeners
 function loadEventListeners() {
-  // DOM Load Event
+
+  // DOM Load Event (show the task inside of the 'ul' and persist it if reload the page)
   document.addEventListener('DOMContentLoaded', getTasks);
+
   // Add task event
   form.addEventListener('submit', addTask);
+
   // Remove task event
   taskList.addEventListener('click', removeTask);
-  //Clear task event
+
+  // Clear task event
   clearBtn.addEventListener('click', clearTasks);
+
   // Filter tasks event
   filter.addEventListener('keyup', filterTasks);
 }
 
-// Get tasks from LS
+// DOM Load Event - Get tasks from LS
 function getTasks() {
   let tasks;
 
@@ -32,7 +37,9 @@ function getTasks() {
     tasks = JSON.parse(localStorage.getItem('tasks'));
   }
 
+  // Loop through
   tasks.forEach(function (task) {
+    // Create the DOM element
     const li = document.createElement('li');
     // Add class
     li.className = 'collection-item';
@@ -46,7 +53,6 @@ function getTasks() {
     link.innerHTML = '<i class="fa fa-remove"></i>';
     // Append the link to li
     li.appendChild(link);
-
     // Append li to ul
     taskList.appendChild(li);
   });
@@ -85,7 +91,7 @@ function addTask(e) {
   e.preventDefault();
 }
 
-// Store Task
+// Store Task in LS
 function storeTaskInLocalStorage(task) {
   let tasks;
 
@@ -93,6 +99,7 @@ function storeTaskInLocalStorage(task) {
     tasks = [];
   } else {
     tasks = JSON.parse(localStorage.getItem('tasks'));
+    // Parses it as JSON.
   }
 
   tasks.push(task);
@@ -102,6 +109,7 @@ function storeTaskInLocalStorage(task) {
 
 // Remove Task
 function removeTask(e) {
+  // Removes from the DOM
   if (e.target.parentElement.classList.contains('delete-item')) {
     if (confirm('Are you sure?')) {
       e.target.parentElement.parentElement.remove();
@@ -122,6 +130,7 @@ function removeTaskFromLocalStorage(taskItem) {
     tasks = JSON.parse(localStorage.getItem('tasks'));
   }
 
+  // Loop through
   tasks.forEach(function (task, index) {
     if (taskItem.textContent === task) {
       tasks.splice(index, 1);
@@ -139,7 +148,7 @@ function clearTasks() {
     taskList.removeChild(taskList.firstChild);
   }
 
-  // Clear frmo LS
+  // Clear from LS
   clearTasksFromLocalStorage();
 }
 
