@@ -99,7 +99,7 @@ function storeTaskInLocalStorage(task) {
     tasks = [];
   } else {
     tasks = JSON.parse(localStorage.getItem('tasks'));
-    // Parses it as JSON.
+    // Parses 'task' in array (JS).
   }
 
   tasks.push(task);
