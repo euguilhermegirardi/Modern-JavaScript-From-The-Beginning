@@ -55,7 +55,7 @@ guessBtn.addEventListener('click', function () {
     if (guessesLeft === 0) {
       // Game over - lost
 
-      gameOver(false), `Game over, you lost. The correct number was ${winningNum}`;
+      gameOver(false, `Game over, you lost. The correct number was ${winningNum}`);
     } else {
       // Game continues - answer wrong
       // Change border color
@@ -81,7 +81,7 @@ function gameOver(won, msg) {
   guessInput.style.borderColor = color;
   // Set text color
   message.style.color = color;
-  // Let the user know he/she won
+  // Set message
   setMessage(msg);
 
   // Play again?
