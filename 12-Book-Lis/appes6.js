@@ -45,7 +45,7 @@ class UI {
   }
 
   deleteBook(target) {
-    if (target.className == 'delete') {
+    if (target.className === 'delete') {
       target.parentElement.parentElement.remove();
     } '';
   }
@@ -56,6 +56,7 @@ class UI {
     document.getElementById('isbn').value = '';
   }
 }
+
 // Event Listeners for Add Book
 document.getElementById('book-form').addEventListener('submit', function (e) {
   e.preventDefault();
@@ -76,10 +77,11 @@ document.getElementById('book-form').addEventListener('submit', function (e) {
     // Error alert
     ui.showAlert('Please, fill in all fields', 'error');
   } else {
+
     // Add book to list
     ui.addBookToList(book);
 
-    // Show sucess
+    // Show success
     ui.showAlert('Book Added!', 'success');
 
     // Clear Inputs
