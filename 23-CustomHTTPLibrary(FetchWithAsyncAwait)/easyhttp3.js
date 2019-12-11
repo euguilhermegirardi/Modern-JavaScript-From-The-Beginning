@@ -3,8 +3,6 @@
  * Library for making HTTP requests
  *
  * @version 3.0.0
- * @author  Brad Traversy
- * @license MIT
  *
  **/
 
@@ -53,7 +51,7 @@ class EasyHTTP {
       }
     });
 
-    const resData = await 'Resource Deleted...';
+    const resData = await 'Resource Deleted!';
     return resData;
   }
 }
